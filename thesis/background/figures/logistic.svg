@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="600"
+   height="400"
+   viewBox="0 0 600 400"
+   version="1.1"
+   id="svg172"
+   sodipodi:docname="logistic.svg"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs176" />
+  <sodipodi:namedview
+     id="namedview174"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.86772663"
+     inkscape:cx="160.1887"
+     inkscape:cy="210.31969"
+     inkscape:window-width="1309"
+     inkscape:window-height="729"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg172" />
+  <title
+     id="title106">Graph of Logistics Curve</title>
+  <desc
+     id="desc108">Originally Produced by GNUPLOT 4.2 patchlevel 2, hand compressed  </desc>
+  <g
+     fill="none"
+     stroke-width="2.0"
+     transform="matrix(0.995,0,0,1.038,167.44756,262.1768)"
+     id="g170"
+     style="stroke:#82b366;stroke-width:59.03927738;stroke-dasharray:none;stroke-opacity:1">
+    <path
+       stroke="#4050C0"
+       d="m -132,93 24.2,-0.6 13.2,-0.4 13.2,-0.7 13.2,-0.8 13.2,-1.1 13.2,-1.5 13.2,-2 13.2,-2.7 L -2.2,79.7 11,75 24.2,69 c 4.5,-2.3 8.9,-4.9 13.2,-7.7 4.5,-3 8.9,-6.3 13.2,-9.8 4.5,-3.8 8.9,-7.9 13.2,-12.2 C 68.3,34.6 72.7,29.7 77,24.4 81.5,18.9 85.9,13 90.2,6.9 l 13.2,-19.9 13.2,-21.9 13.2,-23.1 8.8,-15.5 13.2,-22.8 13.2,-21.3 13.2,-19.2 c 4.3,-5.8 8.7,-11.4 13.2,-16.6 4.3,-5 8.7,-9.6 13.2,-14 4.3,-4.1 8.7,-7.9 13.2,-11.3 4.3,-3.4 8.7,-6.4 13.2,-9.1 4.3,-2.7 8.8,-5 13.2,-7.2 l 13.2,-5.5 13.2,-4.2 13.2,-3.2 13.2,-2.4 13.2,-1.9 13.2,-1.3 13.2,-1.1 13.2,-0.7 13.2,-0.6 11,-0.3 19.8,-0.5"
+       id="path168"
+       style="stroke:#82b366;stroke-width:59.03927738;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <metadata
+     id="metadata4210">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Graph of Logistics Curve</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

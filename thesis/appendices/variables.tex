@@ -1,0 +1,114 @@
+\chapter{List of SOSAA Input and Output Variables} \label{app:sosaa-variables}
+
+The following sections list the name, semantics, and units for each input and output variable in the SOSAA trajectories dataset that we use. The perturbation group for \Cref{txt:perturbation-generalisation} is also given in brackets after each variable's name. In each section, the first one or two variables describe the time and height layer indexing that is used by the following features, which all note how they are indexed.
+
+\section{Meteorological Input Variables}
+
+\begin{itemize}
+    \item \texttt{time}: time until the arrival at Hyyti\"al\"a in $\text{s}$
+    \item \texttt{lev}: height level in $\text{m}$
+    \item \texttt{t} (\textbf{temperature}): temperature in $\text{K}$, indexed by \texttt{time} and \texttt{lev}
+    \item \texttt{q} (\textit{\textbf{ungrouped}}): specific humidity in $\frac{\text{kg}}{\text{kg}}$, indexed by \texttt{time} and \texttt{lev}
+    \item \texttt{ssr} (\textit{\textbf{ungrouped}}): surface net solar radiation in $\frac{\text{W}}{\text{m}^2}$, indexed by \texttt{time}
+    \item \texttt{lsm} (\textit{\textbf{ungrouped}}): land sea mask $(0-1)$, indexed by \texttt{time}
+    \item \texttt{blh} (\textit{\textbf{ungrouped}}): atmospheric boundary layer height in $\text{m}$, indexed by \texttt{time}
+\end{itemize}
+
+\section{Aerosol Emission Input Variables}
+
+\begin{itemize}
+    \item \texttt{layer}: evelation from ground in $\text{m}$
+    \item \texttt{time}: time until the arrival at Hyyti\"al\"a in $\text{s}$
+    \item \texttt{3-10nm} (\textbf{aerosols}): $3-10\text{nm}$ diameter particle emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{10-20nm} (\textbf{aerosols}): $10-20\text{nm}$ diameter particle emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{20-30nm} (\textbf{aerosols}): $20-30\text{nm}$ diameter particle emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{30-50nm} (\textbf{aerosols}): $30-50\text{nm}$ diameter particle emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{50-70nm} (\textbf{aerosols}): $50-70\text{nm}$ diameter particle emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{70-100nm} (\textbf{aerosols}): $70-100\text{nm}$ diameter particle emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{100-200nm} (\textbf{aerosols}): $100-200\text{nm}$ diameter particle emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{200-400nm} (\textbf{aerosols}): $200-400\text{nm}$ diameter particle emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{400-1000nm} (\textbf{aerosols}): $400-1000\text{nm}$ diameter particle emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+\end{itemize}
+
+\section{Anthropogenic Emission Input Variables}
+
+\begin{itemize}
+    \item \texttt{layer}: evelation from ground in $\text{m}$
+    \item \texttt{time}: time until the arrival at Hyyti\"al\"a in $\text{s}$
+    \item \texttt{co} (\textit{\textbf{ungrouped}}): $\text{CO}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{nox} (\textbf{$\text{NO}_{x}$}): $\text{NO}_{x}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{co2} (\textbf{anthropogenic}): $\text{CO}_{2}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{nh3} (\textit{\textbf{ungrouped}}): $\text{NH}_{3}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{ch4} (\textit{\textbf{ungrouped}}): $\text{CH}_{4}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{so2} (\textbf{$\text{SO}_{2}$}): $\text{SO}_{2}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{nmvoc} (\textbf{anthropogenic}): non-methane VOC emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{alcohols} (\textbf{anthropogenic}): alcohol emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{ethane} (\textbf{anthropogenic}): ethane emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{propane} (\textbf{anthropogenic}): propane emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{butanes} (\textbf{anthropogenic}): emissions of butanes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{pentanes} (\textbf{anthropogenic}): emissions of pentanes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{hexanes} (\textbf{anthropogenic}): emissions of hexanes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{ethene} (\textbf{anthropogenic}): ethene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{propene} (\textbf{anthropogenic}): propene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{acetylene} (\textbf{anthropogenic}): acetylene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{isoprene} (\textbf{anthropogenic}): isoprene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{monoterpenes} (\textbf{anthropogenic}): emissions of monoterpenes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{other-alkenes-and-alkynes} (\textbf{anthropogenic}): emissions of other alkenes and alkynes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{benzene} (\textbf{anthropogenic}): benzene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{toluene} (\textbf{anthropogenic}): toluene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{xylene} (\textbf{anthropogenic}): xylene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{trimethylbenzene} (\textbf{anthropogenic}): trimethylbenzene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{other-aromatics} (\textbf{anthropogenic}): emissions of other aromatics in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{esters} (\textbf{anthropogenic}): emissions of esters in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{ethers} (\textbf{anthropogenic}): emissions of ethers in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{formaldehyde} (\textbf{anthropogenic}): formaldehyde emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{other-aldehydes} (\textbf{anthropogenic}): emissions of other aldehydes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{total-ketones} (\textbf{anthropogenic}): total ketones emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{total-acids} (\textbf{anthropogenic}): total acids emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+    \item \texttt{other-VOCs} (\textbf{anthropogenic}): emissions of other VOCs in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{layer} and \texttt{time}
+\end{itemize}
+
+\section{Biogenic Emission Input Variables}
+
+\begin{itemize}
+    \item \texttt{time}: time until the arrival at Hyyti\"al\"a in $\text{s}$
+    \item \texttt{acetaldehyde} (\textbf{biogenic}): acetaldehyde emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{acetone} (\textbf{biogenic}): acetone emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{butanes-and-higher-alkanes} (\textbf{biogenic}): emissions of butanes and higher alkanes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{butenes-and-higher-alkenes} (\textbf{biogenic}): emissions of butenes and higher alkenes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{CH4} (\textit{\textbf{ungrouped}}): $\text{CH}_{4}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{CO} (\textit{\textbf{ungrouped}}): $\text{CO}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{ethane} (\textbf{biogenic}): ethane emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{ethanol} (\textbf{biogenic}): ethanol emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{ethene} (\textbf{biogenic}): ethene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{formaldehyde} (\textbf{biogenic}): formaldehyde emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{hydrogen-cyanide} (\textbf{biogenic}): hydrogen-cyanide emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{isoprene} (\textbf{biogenic}): isoprene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{MBO} (\textbf{biogenic}): 2-Methyl-3-buten-2-ol (MBO) emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{methanol} (\textbf{biogenic}): methanol emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{methyl-bromide} (\textbf{biogenic}): methyl-bromide emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{methyl-chloride} (\textbf{biogenic}): methyl-chloride emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{methyl-iodide} (\textbf{biogenic}): methyl-iodide emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{other-aldehydes} (\textbf{biogenic}): emissions of other aldehydes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{other-ketones} (\textbf{biogenic}): emissions of other ketones in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{other-monoterpenes} (\textbf{monoterpenes}): emissions of other monoterpenes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{pinene-a} (\textbf{monoterpenes}): $\alpha$-pinene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{pinene-b} (\textbf{monoterpenes}): $\beta$-pinene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{propane} (\textbf{biogenic}): propane emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{propene} (\textbf{biogenic}): propene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{sesquiterpenes} (\textbf{sesquiterpenes}): emissions of sesquiterpenes in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{toluene} (\textbf{biogenic}): toluene emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{CH2Br2} (\textit{\textbf{ungrouped}}): $\text{CH}_{2}\text{Br}_{2}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{CH3I} (\textit{\textbf{ungrouped}}): $\text{CH}_{3}\text{I}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{CHBr3} (\textit{\textbf{ungrouped}}): $\text{CHBr}_{3}$ emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+    \item \texttt{DMS} (\textit{\textbf{ungrouped}}): dimethylsulfide (DMS) emissions in $\frac{\text{kg}}{\text{m}^2 \text{s}}$, indexed by \texttt{time}
+\end{itemize}
+
+\section{Selected Output Variables}
+
+\begin{itemize}
+    \item \texttt{time}: time since the beginning of the month in $\text{s}$
+    \item \texttt{dp\_dry\_fs}: dry radius in $\text{m}$ of aerosol particles in each size bin
+    \item \texttt{lev}: height above the ground in $\text{m}$
+    \item \texttt{nconc\_par}: particle number concentration in $\frac{1}{\text{m}^3}$, indexed by \texttt{time}, \texttt{dp\_dry\_fs}, and \texttt{lev}
+\end{itemize}

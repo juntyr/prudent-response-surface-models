@@ -1,0 +1,9 @@
+[submodule "sosaa"]
+	path = sosaa
+	url = https://version.helsinki.fi/putian.zhou/sosaa.git
+[submodule "sosaa-gui"]
+	path = sosaa-gui
+	url = https://github.com/juntyr/sosaa-gui.git
+[submodule "sosaa-data/trajectories"]
+	path = sosaa-data/trajectories
+	url = https://github.com/juntyr/sosaa-trajectories-dataset.git

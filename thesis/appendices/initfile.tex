@@ -1,0 +1,67 @@
+\chapter{Example of a SOSAA Trajectory Configration} \label{app:sosaa-settings}
+
+The following configuration is an example of a SOSAA settings file. In this case, it sets up the SOSAA run for the trajectory arriving at the SMEAR II measurement station at Hyyti\"al\"a, Finland \cite{smear-station-2013} on 21.05.2018 at 14:00 UTC. The configuration, which is based on \href{https://github.com/juntyr/sosaa-trajectories-dataset/blob/main/settings/baseline/20180521_T14/settings.init}{\texttt{trajectories/settings/baseline/20180521\_T14/settings.init}}, has been condensed here for better readability.
+
+\begin{minted}[linenos,escapeinside=@@]{fortran}
+!==============================================================================!
+!
+!     settings.init configuration for the 21.05.2018 14:00 UTC trajectory
+!
+!==============================================================================!
+
+! Namelist for the SOSAA initialisation
+
+&NML_MAIN
+    WORK_DIR   = 'sosaa'
+    CODE_DIR   = 'sosaa/src',
+    CASE_DIR   = 'sosaa/casedir',
+    CHEM_DIR   = 'sosaa/chemistry/sample_aerosol',
+    INPUT_DIR  = 'sosaa-data/trajectories/inputs/baseline/HYDE_BASE_Y2018',
+    OUTPUT_DIR = 'sosaa-data/trajectories/outputs/baseline/20180521_T14',
+    STATION    = 'traj',
+/
+
+&NML_FLAG
+    FLAG_SKIP_EXISTING = .false.   ! overwrite existing output files
+    FLAG_CHEM = 1,                 ! chemistry is enabled
+    FLAG_GASDRYDEP = 0,            ! gas dry deposition is not yet supported
+                                   !  for trajectories
+    FLAG_AERO = 1,                 ! aerosols are enabled
+    FLAG_EMIS_SOIL = 0,            ! soil emissions are not supported
+                                   !  for trajectories
+    FLAG_DEBUG = 0,                ! no debug messages are output
+    FLAG_OUTLIST = 0,              ! output species are read from this config
+    FLAG_VAPOR = 0,                ! save all vapours to the output
+    FLAG_MODEL_TYPE = 2,           ! trajectory mode
+    FLAG_MIX_CHEM = 1,             ! vertical mixing of chemical species is on
+    FLAG_MIX_AERO = 1,             ! vertical mixing of aerosols is on
+/
+
+&AER_FLAG
+    OPTIONS%CONDENSATION = .true.,    ! aerosol condensation is on
+    OPTIONS%COAGULATION = .true.,     ! aerosol coagulation is on
+    OPTIONS%ACDC = .true.,            ! nucleation using ACDC is on
+    OPTIONS%ORG_NUCL = .true.,        ! organic nucleation is on
+    OPTIONS%AER_EMISSIONS = .true.,   ! aerosol emissions are read in
+    OPTIONS%SEASALT_EMS = .true.,     ! sea salt emissions are on
+
+    ACDC_SYSTEMS  = 1,0,0,0,0         ! only ACDC system 1 is enabled
+    ACDC_links(1) = 'A H2SO4 N NH3'   ! RICC2 level of theory
+    ACDC_links(2) = 'A H2SO4 D DMA'   ! DLPNO level of theory
+    ACDC_links(3) = 'A H2SO4 D DMA'   ! RICC2 level of theory
+    ACDC_links(4) = 'A H2SO4 N NH3'   ! DLPNO level of theory
+    ACDC_links(5) = 'A H2SO4 N NH3'   ! spare system
+    vap_names     = 'sosaa/chemistry/sample_aerosol/INPUT/condensable_vapors/&
+                     &EVAPORATION_1.2.2_ALL_1e-9.dat'
+/
+
+&NML_TIME
+    start_date      = 2018, 05, 14, 00, 00, 00,
+    aero_start_date = 2018, 05, 14, 00, 00, 00,
+    end_date        = 2018, 05, 21, 14, 00, 00,
+    dt_mete         = 10.0d0,   ! time step for meteorology
+    dt_chem         = 60.0d0,   ! time step for chemistry
+    dt_emis         = 60.0d0,   ! time step for emissions
+    dt_aero         = 60.0d0,   ! time step for aerosols
+/
+\end{minted}

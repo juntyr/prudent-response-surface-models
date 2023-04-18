@@ -1,0 +1,43 @@
+\renewenvironment{abstract}{
+    \thispagestyle{empty}
+    {\raggedright\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}
+        {\textbf{Faculty:} Faculty of Science\par}
+        {\textbf{Degree programme:} Theoretical and Computational Methods\par}
+        {\textbf{Author:} \@author\par}
+        {\textbf{Title:} \@title ~-- \subtitle\par}
+        {\textbf{Level:} Master's Thesis\par}
+        {\textbf{Month and year:} \MyyyyDate\@date\par}
+        {\textbf{Number of pages:} \pageref*{LastPage}\par}
+        {\textbf{Keywords:} \keywords\par}
+        {\textbf{Supervisors:} \par\supervisorlist\par}
+        {\textbf{Where deposited:} HELDA e-thesis platform\par}
+        {\textbf{Additional information:} \additionalinfo\par}
+        {\textbf{Abstract:}\par}
+    }
+}
+
+\begin{abstract}
+    \newpar Response Surface Models (RSM) are cheap, reduced complexity, and, usually, statistical models that are fit to the response of more complex models to approximate their outputs with higher computational efficiency. RSMs in atmospheric science have seen a continuous push to reduce the amount of training data they require to allow RSMs to be used more ad hoc and with higher flexibility. However, with the decrease in diverse training data, the risk increases that the RSM is eventually used on inputs on which it cannot make a prediction. If there is no indication from the model that its outputs can no longer be trusted, trust in an entire RSM decreases. We present a framework for building \textit{prudent} RSMs that always output predictions with confidence and uncertainty estimates. We show how confidence and uncertainty can be propagated through downstream analysis such that even predictions on inputs outside the training domain or in areas of high variance can be integrated.
+
+    \newpar Specifically, we introduce the Icarus RSM architecture, which combines an out-of-distribution detector, a prediction model, and an uncertainty quantifier. Icarus-produced predictions and their uncertainties are conditioned on the confidence that the inputs come from the same distribution that the RSM was trained on. We put particular focus on exploring out-of-distribution detection, for which we conduct a broad literature review, design an intuitive evaluation procedure with three easily-visualisable toy examples, and suggest two methodological improvements. We also explore and evaluate popular prediction models and uncertainty quantifiers.
+
+    \newpar We use the one-dimensional atmospheric chemistry transport model SOSAA as an example of a complex model for this thesis. We produce a dataset of model inputs and outputs from simulations of the atmospheric conditions along air parcel trajectories that arrived at the SMEAR II measurement station in Hyyti\"al\"a, Finland, in May 2018. We evaluate several prediction models and uncertainty quantification methods on this dataset and construct a proof-of-concept SOSAA RSM using the Icarus RSM architecture. The SOSAA RSM is built on pairwise-difference regression using random forests and an auto-associative out-of-distribution detector with a confidence scorer, which is trained with both the original training inputs and new synthetic out-of-distribution samples. We also design a graphical user interface to configure the SOSAA model and trial the SOSAA RSM.
+
+    \newpar We provide recommendations for out-of-distribution detection, prediction models, and uncertainty quantification based on our exploration of these three systems. We also stress-test the proof-of-concept SOSAA RSM implementation to reveal its limitation for predicting model perturbation outputs and show where future research would be valuable. Finally, our experimentation affirms the importance of reporting well-calibrated confidence and uncertainty alongside predictions such that they can be used with confidence and certainty in scientific research applications.
+    
+    \newpar ACM Computing Classification System (CCS):
+
+    \noindent Computing methodologies
+    
+    $\rightarrow$ Machine learning $\rightarrow$ Learning paradigms $\rightarrow$ Unsupervised learning $\rightarrow$ Anomaly detection
+
+    $\rightarrow$ Modeling and simulation $\rightarrow$ Model development and analysis $\rightarrow$ Uncertainty quantification
+
+    \noindent Applied computing
+    
+    $\rightarrow$ Physical sciences and engineering $\rightarrow$ Physics
+
+    \noindent Human-centered computing
+    
+    $\rightarrow$ Human computer interaction $\rightarrow$ Interaction paradigms $\rightarrow$ Graphical user interfaces
+\end{abstract}
