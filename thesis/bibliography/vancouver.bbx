@@ -1,0 +1,72 @@
+\ProvidesFile{vancouver.bbx}
+[\abx@bbxid]
+
+\RequireBibliographyStyle{numeric}
+
+\ExecuteBibliographyOptions
+  {
+	giveninits	= true		,
+	isbn		= false		,
+	maxbibnames	= 3			,
+	sorting		= nty		,
+	urldate		= long		,
+	dateabbrev	= false		,
+    abbreviate  = false     ,
+  }
+
+%%%%%%%%INDENTATION OF BIBLIOGRAPHY%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\bibhang}{0pt}
+\setlength\bibitemsep{1.5\itemsep}
+
+%%%%%%%%URL/DOI FIELD AD JUSTMENTS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NewBibliographyString{available}
+\DefineBibliographyStrings{english}{available = {Available from},}
+\DefineBibliographyStrings{english}{urlseen = {Accessed},}
+\DefineBibliographyStrings{english}{andothers = {\em et\addabbrvspace al\adddot},}
+
+%%%%%%%%BIBLIOGRAPHY SORTING%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareNameAlias{sortname}{family-given}
+
+%%%%%%%%FIELD FORMATS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareFieldFormat{pages}{#1} %removes pp
+\DeclareFieldFormat*{title}{#1} %Article titles without italics, journal name with
+\DeclareFieldFormat{url}{\bibstring{available}\addcolon\space\url{#1}\nopunct} %changes url to the newly defined Available from
+\DeclareFieldFormat{urldate}{[\bibstring{urlseen}\space#1]} %changes urldate to Accessed
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}} %Issue number in parentheses
+\DeclareFieldFormat{doi}{%
+	\bibstring{urlfrom}\addcolon\space \ifhyperref {\href{https://doi.org/#1}{\nolinkurl{doi:#1}}} {\nolinkurl{#1}}
+    } %Formats URL display
+
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addperiod\space}%
+  \usebibmacro{date}%
+  \setunit{\addsemicolon}%
+  \iffieldundef{series}
+    {}
+    {\newunit
+     \printfield{series}parts%
+     \setunit{\addspace}}%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addspace}%
+  \setunit{\addcolon\space}%
+  \usebibmacro{pages}%
+  \newunit} %Inserts appropriate period between fields
+\renewbibmacro*{doi+eprint+url}{%
+ \iftoggle{bbx:url} {\iffieldundef{doi}{\usebibmacro{url+urldate}}{}} {}%
+ \newunit\newblock \iftoggle{bbx:doi} {\printfield{doi}\printtext[abrufurl]{}} {} %\printurldate
+ } %Displays only DOI if both DOI and URL are available
+\renewbibmacro*{url}{%
+    \printtext[formaturl]{%
+   	\printfield{url}}%
+	} %Prints date accessed
+\renewbibmacro*{volume+number+eid}{
+    \printfield{volume}%
+    \setunit*{\addnbthinspace}
+    \printfield{number}%
+    \setunit{\addcomma\space}%
+    \printfield{eid}} %Formats Volume and Issue fields
+\newbibmacro*{pages}{%
+  \printfield{pages}%
+  \clearfield{pages}}
+\renewbibmacro{in:}{}

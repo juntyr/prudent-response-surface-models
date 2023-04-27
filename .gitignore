@@ -1,0 +1,11 @@
+**/.env
+
+**/*.o
+**/*.mod
+**/*.a
+
+**/.DS_Store
+
+**/.ipynb_checkpoints
+
+/miniconda3

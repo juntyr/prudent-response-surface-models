@@ -1,0 +1,282 @@
+%% Metadata
+\newcommand{\thetitle}{Prudent Response Surface Models} \title{\thetitle}
+\newcommand{\subtitle}{Exploring a Framework for Approximating Simulations with Confidence and Certainty}
+\newcommand{\theauthor}{Juniper Tyree [they/them]} \author{\theauthor}
+\newcommand{\thefaculty}{Faculty of Science}
+\newcommand{\thelevel}{Master's Thesis}
+\newcommand{\theprogramme}{Master's Programme in Theoretical and Computational Methods}
+\newcommand{\theaddress}{
+    P.O. Box 64 (Gustaf H\"allstr\"omin katu 2)\par
+    00014 University of Helsinki\par
+    Finland
+}
+\newcommand{\supervisorlist}{
+    \quad Prof. Michael Boy, University of Helsinki / LUT University, Finland \\ &
+    \quad Dr Andreas Rupp, LUT University, Finland \\&
+    \quad Petri Clusius, University of Helsinki, Finland
+}
+\newcommand{\examinerlist}{
+    \quad Prof. Michael Boy, University of Helsinki / LUT University, Finland \\ &
+    \quad Dr Andreas Rupp, LUT University, Finland
+}
+\newcommand{\thepublisher}{University of Helsinki}
+\newcommand{\subject}{Response Surface Models (RSMs) are fast reduced complexity models that are fit to approximate more complex models or simulations. However, applying RSMs on data different from the training trajectory can produce invalid predictions without warning. We introduce Prudent RSMs, which always output predictions with confidence and uncertainty estimates. We explore and evaluate out-of-distribution detectors, prediction models, and uncertainty quantifiers. Finally, we apply our conclusions to construct a proof-of-concept RSM for an atmospheric chemistry transport model.}
+\newcommand{\keywords}{SOSAA, response surface model, machine learning, out-of-distribution, uncertainty quantification}
+\newcommand{\additionalinfo}{}
+\newcommand{\depositeplace}{HELDA e-thesis platform, University of Helsinki}
+\newcommand{\lang}{en-GB}
+\newcommand{\thecopyright}{This work is licensed under a Creative Commons Attribution 4.0 International License.}
+\newcommand{\thecopyrighturl}{https://creativecommons.org/licenses/by/4.0/}
+
+%% Write PDF/A metadata
+\RequirePackage{silence}
+\WarningFilter{latex}{Writing or overwriting file `./main.xmpdata'}
+\begin{filecontents*}[overwrite]{\jobname.xmpdata}
+    \Title{\thetitle}
+    \Author{\theauthor}
+    \Creator{\theauthor}
+    \Publisher{\thepublisher}
+    \Subject{\subject}
+    \Keywords{\keywords}
+    \Language{\lang}
+    \Copyright{\thecopyright}
+    \CopyrightURL{\thecopyrighturl}
+\end{filecontents*}
+
+\documentclass[a4paper, twoside]{report}
+
+\usepackage{etoolbox}
+\apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
+
+%% Language, colour profile and font encodings
+\usepackage[british]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{colorprofiles}
+% Note: Fixup with https://www.pdfforge.org/online/en/pdf-to-pdfa is required
+% TODO: Validate compliance with https://www.pdf-online.com/osa/validate.aspx
+\usepackage[a-3b,mathxmp]{pdfx}[2018/12/22]
+\usepackage[T1]{fontenc}
+%\usepackage{tgbonum}
+
+%% Set page size and margins
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+
+%% Set up fancy page headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\slshape\nouppercase\leftmark}
+\lhead{\slshape\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\lfoot{\thepage}
+\rfoot{\thepage}
+
+%% Detect if compilation happens inside Overleaf
+% https://tex.stackexchange.com/a/650621
+\def\StripPrefix#1>{}
+\def\isOverleaf{\fi
+    \def\overleafJobname{output} % overleaf defaults to 'output' as \jobname
+    \edef\overleafJobname{\expandafter\StripPrefix\meaning\overleafJobname}%
+    \edef\job{\jobname}%
+    \ifx\job\overleafJobname
+}
+
+%% Set up the bibliography style and commands
+\usepackage[backend=biber, style=bibliography/vancouver, sorting=none, backref=true, defernumbers=true, natbib]{biblatex}
+
+\bibliography{bibliography/bibliography.bib}
+
+\DeclareBibliographyCategory{cited}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+
+\makeatletter
+\DeclareCiteCommand{\citepalias}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+  \printtext[bibhyperref]{\@citealias{\thefield{entrykey}}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+\DeclareCiteCommand{\citeauthor}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   \printtext[bibhyperref]{\printnames{labelname}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{subfigure}
+\usepackage{datetime}
+\usepackage{lastpage}
+\usepackage[nameinlink]{cleveref}
+\usepackage[all]{hypcap}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{paracol}
+\usepackage{xstring}
+\usepackage{soul}
+\usepackage[normalem]{ulem}
+\usepackage{adjustbox}
+\usepackage{wrapfig}
+\if\isOverleaf
+    \usepackage[outputdir=../]{minted}
+\else
+    \usepackage{minted}
+\fi
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{caption}
+
+%% Caption formatting style
+\captionsetup{labelfont={bf}, textfont={sf}}
+
+%% Date formatting styles
+\newdateformat{MddyyyyDate}{\monthname[\THEMONTH] \THEDAY, \THEYEAR}
+\newdateformat{MyyyyDate}{\monthname[\THEMONTH] \THEYEAR}
+
+%% Code snippet style
+\usemintedstyle{tango}
+\lstset{
+    frame=single,
+    framexleftmargin=15pt
+}
+
+%% Custom Colours
+% Acknowledgements
+\definecolor{arden}{RGB}{150, 65, 147}
+% Matplotlib default colours
+\definecolor{matplotlib-0}{RGB}{31, 119, 180}
+\definecolor{matplotlib-1}{RGB}{255, 127, 14}
+\definecolor{matplotlib-2}{RGB}{44, 160, 44}
+\definecolor{matplotlib-3}{RGB}{214, 39, 40}
+\definecolor{matplotlib-4}{RGB}{148, 103, 189}
+\definecolor{matplotlib-5}{RGB}{140, 86, 75}
+\definecolor{matplotlib-6}{RGB}{227, 119, 194}
+\definecolor{matplotlib-7}{RGB}{127, 127, 127}
+\definecolor{matplotlib-8}{RGB}{188, 189, 34}
+\definecolor{matplotlib-9}{RGB}{23, 190, 207}
+% Confidence encoding using CET_L20
+\definecolor{confidence-ood}{RGB}{64, 57, 110}
+\definecolor{confidence-id}{RGB}{230, 182, 19}
+\definecolor{confidence-any}{RGB}{65, 154, 117}
+\definecolor{confidence-idk}{RGB}{49, 108, 196}
+% Aerosol Figure
+\definecolor{primary-aerosol}{RGB}{209, 148, 92}
+\definecolor{aerosol-precursor}{RGB}{234, 107, 102}
+\definecolor{aerosol-voc}{RGB}{181, 115, 157}
+\definecolor{aerosol-ccn}{RGB}{126, 166, 224}
+\definecolor{aerosol-climate}{RGB}{219, 194, 0}
+% Icarus RSM Figure
+\definecolor{icarus-confidence}{RGB}{184, 84, 80}
+\definecolor{icarus-prediction}{RGB}{150, 115, 166}
+\definecolor{icarus-uncertainty}{RGB}{108, 142, 191}
+
+%% Custom Math commands
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%% Macros
+\newcommand{\citelink}[2]{\hyperlink{cite.\therefsection @#1}{#2}}
+\renewcommand{\textcite}[1]{\citelink{#1}{\citeauthor{#1}} (\citelink{#1}{\citeyear{#1}})}
+\newcommand{\tocite}[1][??]{\textcolor{red}{\textbf{[#1]}}}
+\newcommand{\given}{\mathrel{|}}
+\renewcommand{\st}{\mathrel{:}}
+\newcommand{\newpar}{\vspace{\baselineskip} \noindent}
+\renewcommand{\hl}{\bgroup\markoverwith{\textcolor{yellow}{\rule[-.5ex]{.1pt}{2.5ex}}}\ULon}
+
+%% hyperref setup, included by pdfx
+\hypersetup{
+    pdfstartview=,
+    colorlinks=true,
+    allcolors=blue
+}
+
+\globalcounter{figure}
+
+\begin{document}
+    %% Title page and Abstract
+    \input{title/title.tex}
+    \input{abstract/abstract}
+    \input{acknowledgements/acknowledgements}
+    
+    %% Table of Contents, List of Figures and Tables
+    \renewcommand{\contentsname}{Table of Contents}
+    \tableofcontents
+    \addtocontents{toc}{~\hfill\textbf{Page}\par}
+    \addcontentsline{toc}{chapter}{Table of Contents}
+    \listoffigures
+    % \addcontentsline{toc}{chapter}{List of Figures}
+    {\let\clearpage\relax \listoftables}
+    % \addcontentsline{toc}{chapter}{List of Tables}
+    \renewcommand\listoflistingscaption{List of Code Snippets}
+    {\let\clearpage\relax \listoflistings}
+    % \addcontentsline{toc}{chapter}{List of Code Snippets}
+    
+    %% Introduction
+    \input{introduction/introduction}
+
+    %% Background literature review
+    \input{background/background}
+
+    %% Motivation and description of Icarus RSM
+    \input{icarus/icarus.tex}
+
+    %% SOSAA Dataset description and brief exploration
+    \input{sosaa-data/sosaa-data.tex}
+
+    %% OOD Detection, Synthesis and Scoring Experiments
+    \input{ood-detection/ood-detection.tex}
+
+    %% Prediction Models for SOSAA data
+    \input{prediction/prediction.tex}
+
+    %% Uncertainty Quantifiers for SOSAA data
+    \input{uncertainty/uncertainty.tex}
+
+    %% Evaluation of the Icarus RSM on SOSAA data
+    \input{evaluation/evaluation.tex}
+
+    %% Introduction to the new SOSAA GUI
+    \input{sosaa-gui/sosaa-gui.tex}
+
+    %% Conclusions and Future Work
+    \input{conclusions/conclusions.tex}
+
+    %% Bibliography, split into reference list and further reading
+    \nocite{*}
+    \sloppy
+    \newrefcontext[sorting=none]
+    \printbibliography[category=cited, heading=bibintoc, title={Reference List}, segment=\therefsegment]
+    % \newrefcontext[sorting=nty]
+    % \printbibliography[notcategory=cited, heading=bibintoc, title={Further Reading}, segment=\therefsegment]
+    \fussy
+    
+    %% Appendices
+    \appendix
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Appendices}
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+    \addtocontents{toc}{\let\protect\l@section\protect\l@subsection}
+    %% Example SOSAA initfile configuration
+    \input{appendices/initfile.tex}
+    %% Overview of all used SOSAA input and output variables
+    \input{appendices/variables.tex}
+    %% Inputs for the Six Trajectories
+    \input{appendices/trajectories.tex}
+    %% Perturbation run CCN concentration differences
+    \input{appendices/perturbations.tex}
+\end{document}

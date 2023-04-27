@@ -1,0 +1,28 @@
+\newenvironment{acknowledgements}[1][Acknowledgements]{
+    \chapter*{#1}\markboth{}{}
+    \thispagestyle{empty}
+}{\clearpage}
+
+\begin{acknowledgements}
+    The story behind this thesis begins with an email in late 2021. I wrote to Dr Putian Zhou, one of the developers of the SOSAA model, to ask if he would be teaching his ``Introduction to Earth System Modelling'' course in spring 2022. While this was unfortunately not the case, Putian introduced me to Prof. Michael Boy, the co-lead of the Multi-Scale Modelling (MSM) group at the Institute for Atmospheric and Earth System Research (INAR) at the University of Helsinki. That spring, I worked on a small side project with Michael and Petri Clusius, a PhD student in the group. This side project laid the groundwork for the SOSAA GUI, which I have further developed and released as a small part of this thesis. I enjoyed working in their MSM group so much that I approached Michael and Petri again later that year to ask if I could work on my MSc thesis in their group. The project started with a seemingly simple question: Can machine learning make the data-hungry sensitivity analysis of the SOSAA model more efficient? However, as I began investigating different machine-learning methods for SOSAA, I stumbled across a much more daunting question that pulled me in:
+
+    \begin{center}
+        How can we trust the machine learning models we train to approximate SOSAA for faster analysis?
+    \end{center}
+
+    \noindent Exploring this question has shifted and expanded the scope of this thesis significantly. Writing this thesis was only possible because of the continuous support from my wonderful supervisors, friends, and family.
+
+    \newpar Therefore, my first round of thanks goes to my three supervisors. They have provided their diverse scientific backgrounds since the beginning to inspire my exploration and warn me about the pitfalls ahead. First, I want to thank \textbf{Andreas} for being a fierce and fair critic who pushed my ideas and writing with his always detailed and extremely helpful feedback. Second, \textbf{Michael}'s aura of calm and encouragement provided me with continuous lighthouses during this project. He showed me I was still on the right track and could continue without worry. Finally, I could not be more grateful for \textbf{Petri} (aka Dr Johnny Bananas), whose office I shared for almost a year, who helped me enormously with performing the SOSAA runs, listened to all my ideas and helped me improve them, and who gave me confidence whenever the scope of this project made me doubt.
+
+    Besides my supervisors, I want to extend my gratitude to all those who have helped me professionally. Thank you to \textbf{Chen}, \textbf{Flyura}, \textbf{Kai}, and \textbf{Heikki}, who have all equipped me with the tools for this project. I also want to thank \textbf{Putian} for being a good company in the office in the evening and for having the references on hand that I could not find. Finally, my meandering explorations would not have been possible without the computational resources from the IT for Science Group at the University of Helsinki and CSC, the IT Center for Science in Finland.
+
+    Last but not least, I want to thank my friends and family, without whom I would not have gotten through the last few years. Moving to a new country is always exciting and scary, so I first want to thank \textbf{L\={\i}va}, who I met during orientation and who I have gone on many hikes and tea breaks with. Second, I would also like to mention the \textbf{Kumpula LGBTQIA+ group} around \textbf{Deanna} who have made me feel at home in Helsinki right from the beginning. Of course, I also cannot forget my parents, who have relentlessly supported me through all the rapid and enormous life changes that I have gone through. Third, I want to express my gratitude to \textbf{Ray}, who has now made me survive two theses and whom I've been so proud to see grow and flourish over the past two years. Finally, I am eternally thankful for \textcolor{arden}{\textbf{Arden}}, who upended my life soon after I moved to Helsinki and with whom I now get to build our family.
+
+    \newpar This project has been challenging from the start and quickly pushed me to explore new areas of research and computing that I was not yet comfortable with. I would not have been able to do it without my amazing support system around me, and I thank all of them from the bottom of my heart.
+ 
+    \newpar \begin{flushright}
+        Helsinki, \MyyyyDate\@date
+
+        \@author
+    \end{flushright}
+\end{acknowledgements}

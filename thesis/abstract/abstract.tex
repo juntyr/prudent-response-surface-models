@@ -1,0 +1,78 @@
+\newsavebox{\@abstract}
+\newenvironment{@summary}{
+  \begin{lrbox}{\@abstract}
+    \begin{minipage}[t]{5.95in}
+      \setlength{\parskip}{2ex}
+}{
+    \end{minipage}
+  \end{lrbox}
+  \put(58, 619){\mbox{\usebox{\@abstract}}}
+}
+
+\def\abst@small{\fontsize{10}{12}\selectfont}
+\def\abst@tiny{\fontsize{6}{7}\selectfont}
+
+\renewenvironment{abstract}{
+    \thispagestyle{empty}
+    \begin{picture}(462,690)(58,65)
+        \put(58,  744){\makebox(100, 8)[l]{\abst@small\thefaculty}}
+        \put(212, 744){\makebox(100, 8)[l]{\abst@small\theprogramme}}
+        \put(58,  714){\makebox(100, 8)[l]{\abst@small\@author}}
+        \put(58,  684){\parbox[l]{420pt}{\renewcommand{\baselinestretch}{.9}\abst@small\@title: \subtitle}}
+        \put(58,  648){\makebox(100, 8)[l]{\abst@small\thelevel}}
+        \put(212, 648){\makebox(100, 8)[l]{\abst@small\MddyyyyDate\@date}}
+        \put(366, 648){\makebox(100, 8)[l]{\abst@small\pageref*{LastPage}}}
+        \put(58,  109) {\makebox(100, 8)[l]{\abst@small\keywords}}
+        \put(58,  79) {\makebox(100, 8)[l]{\abst@small\depositeplace}}
+        \put(58,  53) {\makebox(100, 8)[l]{\abst@small\additionalinfo}}
+
+        \begin{@summary}\abst@small
+}{
+        \end{@summary}
+
+        \put(53,30){\framebox(462,746){}}
+        \put(207,739){\line(0,1){37}}
+        \put(53,739){\line(1,0){462}} 
+        \put(53,709){\line(1,0){462}}
+        \put(53,673){\line(1,0){462}}
+        \put(53,643){\line(1,0){462}}
+        \put(207,643){\line(0,1){30}}
+        \put(361,643){\line(0,1){30}}
+
+        \put(53,74){\line(1,0){462}}
+        \put(53,104){\line(1,0){462}}
+        \put(53,134){\line(1,0){462}}
+
+        \put(53,781){\makebox(100,8)[l]{\abst@small HELSINGIN YLIOPISTO --- HELSINGFORS UNIVERSITET --- UNIVERSITY OF HELSINKI}}
+        \put(58,767){\makebox(150,6)[l]{\tiny Tiedekunta --- Fakultet --- Faculty}}
+        \put(212,767){\makebox(100,6)[l]{\abst@tiny Koulutusohjelma --- Utbildningsprogram --- Degree programme}}
+        \put(58,730){\makebox(100,5)[l]{\abst@tiny Tekij\"a --- F\"orfattare --- Author}}
+        \put(58,700){\makebox(100,5)[l]{\abst@tiny Ty\"on nimi --- Arbetets titel --- Title}}
+        \put(58,664){\makebox(100,5)[l]{\abst@tiny Ty\"on laji --- Arbetets art --- Level}}
+        \put(212,664){\makebox(100,5)[l]{\abst@tiny Aika --- Datum --- Month and year }}
+        \put(366,664){\makebox(100,5)[l]{\abst@tiny Sivum\"a\"ar\"a --- Sidantal --- Number of pages}}
+            
+        \put(58,634){\makebox(100,5)[l]{\abst@tiny Tiivistelm\"a --- Referat --- Abstract}}
+        \put(58,125){\makebox(100,5)[l]{\abst@tiny Avainsanat --- Nyckelord --- Keywords}}
+        \put(58,95){\makebox(100,5)[l]{\abst@tiny S\"ailytyspaikka --- F\"orvaringsst\"alle --- Where deposited}}
+        \put(58,65){\makebox(100,5)[l]{\abst@tiny Muita tietoja --- \"Ovriga uppgifter --- Additional information}}
+    \end{picture}
+}
+
+\begin{abstract}
+    Response Surface Models (RSM) are cheap, reduced complexity, and, usually, statistical models that are fit to the response of more complex models to approximate their outputs with higher computational efficiency. In atmospheric science, there has been a continuous push to reduce the amount of training data required to fit an RSM. With this reduction in costly data gathering, RSMs can be used more ad hoc and quickly adapted to new applications. However, with the decrease in diverse training data, the risk increases that the RSM is eventually used on inputs on which it cannot make a prediction. If there is no indication from the model that its outputs can no longer be trusted, trust in an entire RSM decreases. We present a framework for building \textit{prudent} RSMs that always output predictions with confidence and uncertainty estimates. We show how confidence and uncertainty can be propagated through downstream analysis such that even predictions on inputs outside the training domain or in areas of high variance can be integrated.
+
+    Specifically, we introduce the Icarus RSM architecture, which combines an out-of-distribution detector, a prediction model, and an uncertainty quantifier. Icarus-produced predictions and their uncertainties are conditioned on the confidence that the inputs come from the same distribution that the RSM was trained on. We put particular focus on exploring out-of-distribution detection, for which we conduct a broad literature review, design an intuitive evaluation procedure with three easily-visualisable toy examples, and suggest two methodological improvements. We also explore and evaluate popular prediction models and uncertainty quantifiers.
+
+    We use the one-dimensional atmospheric chemistry transport model SOSAA as an example of a complex model for this thesis. We produce a dataset of model inputs and outputs from simulations of the atmospheric conditions along air parcel trajectories that arrived at the SMEAR II measurement station in Hyyti\"al\"a, Finland, in May 2018. We evaluate several prediction models and uncertainty quantification methods on this dataset and construct a proof-of-concept SOSAA RSM using the Icarus RSM architecture. The SOSAA RSM is built on pairwise-difference regression using random forests and an auto-associative out-of-distribution detector with a confidence scorer, which is trained with both the original training inputs and new synthetic out-of-distribution samples. We also design a graphical user interface to configure the SOSAA model and trial the SOSAA RSM.
+
+    We provide recommendations for out-of-distribution detection, prediction models, and uncertainty quantification based on our exploration of these three systems. We also stress-test the proof-of-concept SOSAA RSM implementation to reveal its limitations for predicting model perturbation outputs and show directions for valuable future research. Finally, our experiments affirm the importance of reporting predictions alongside well-calibrated confidence scores and uncertainty levels so that the predictions can be used with confidence and certainty in scientific research applications.
+    
+    {\protect{
+      ACM Computing Classification System (CCS):\ \\
+      \ Computing methodologies\ \\
+      \ $\rightarrow$ Machine learning $\rightarrow$ Learning paradigms $\rightarrow$ Unsupervised learning $\rightarrow$ Anomaly detection\ \\
+      \ $\rightarrow$ Modeling and simulation $\rightarrow$ Model development and analysis $\rightarrow$ Uncertainty quantification\ \\
+      \ \noindent Applied computing $\rightarrow$ Physical sciences and engineering $\rightarrow$ Physics
+    }}
+\end{abstract}

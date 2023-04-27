@@ -1,0 +1,51 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Prudent Response Surface Models
+message: >-
+  If you use this work, please cite it using the   metadata
+  from this file.
+type: software
+authors:
+  - given-names: Juniper
+    family-names: Tyree
+    email: juniper.tyree@helsinki.fi
+    affiliation: University of Helsinki
+    orcid: 'https://orcid.org/0000-0002-7923-9609'
+  - given-names: Michael
+    family-names: Boy
+    email: michael.boy@helsinki.fi
+    orcid: 'https://orcid.org/0000-0002-8107-4524'
+    affiliation: 'University of Helsinki, LUT University'
+  - given-names: Andreas
+    family-names: Rupp
+    email: andreas.rupp@lut.fi
+    affiliation: LUT University
+    orcid: 'https://orcid.org/0000-0001-5527-7187'
+  - given-names: Petri
+    family-names: Clusius
+    email: petri.clusius@helsinki.fi
+    orcid: 'https://orcid.org/0000-0003-3121-0775'
+    affiliation: University of Helsinki
+identifiers:
+  - type: url
+    value: >-
+      https://github.com/juntyr/prudent-response-surface-models/releases/tag/msc-tcm
+    description: The GitHub release
+repository-code: 'https://github.com/juntyr/prudent-response-surface-models'
+abstract: >-
+  Prudent Response Surface Models combine predictions with
+  confidence scores and uncertainty levels, allowing their
+  use in downstream analysis even for high-uncertainty or
+  out-of-distribution inputs.
+keywords:
+  - SOSAA
+  - response surface model
+  - machine learning
+  - out-of-distribution
+  - uncertainty quantification
+license: CC-BY-4.0
+commit: msc-tcm
+version: 1.0.0
+date-released: '2023-04-27'
