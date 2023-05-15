@@ -29,6 +29,12 @@ authors:
     orcid: 'https://orcid.org/0000-0003-3121-0775'
     affiliation: University of Helsinki
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.7938527
+    description: The Zenodo release
+  - type: url
+    value: 'http://urn.fi/URN:NBN:fi:hulib-202305151941'
+    description: The HELDA record
   - type: url
     value: >-
       https://github.com/juntyr/prudent-response-surface-models/releases/tag/msc-tcm

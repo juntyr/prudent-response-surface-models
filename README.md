@@ -1,4 +1,12 @@
-# Prudent Response Surface Models
+# Prudent Response Surface Models &emsp; [![DOI]][doi-url] [![URN]][urn-url]
+## Exploring a Framework for Approximating Simulations with Confidence and Certainty
+- - - -
+
+[DOI]: https://zenodo.org/badge/629360607.svg
+[doi-url]: https://doi.org/10.5281/zenodo.7938527
+
+[URN]: https://img.shields.io/badge/URN-NBN%3Afi%3Ahulib--202305151941-96ba33
+[urn-url]: http://urn.fi/URN:NBN:fi:hulib-202305151941
 
 This repository contains all data, code, results, visualisations, and writing produced by [Juniper Tyree](https://github.com/juntyr) for their Master's Thesis on "Prudent Response Surface Models" for the M.Sc. Theoretical and Computational Methods programme at the University of Helsinki.
 
